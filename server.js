@@ -17,9 +17,9 @@ app.use(
 );
 app.use(bodyParser.json());
 connectDB();
-// const publicDirectoryPath = path.join(__dirname, 'client/build');
+const publicDirectoryPath = path.join(__dirname, 'client/build');
 
-// app.use(express.static(publicDirectoryPath));
+app.use(express.static(publicDirectoryPath));
 
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
@@ -37,7 +37,7 @@ app.use('/api/items', require('./routes/items'));
 app.use('/api/paytm', require('./routes/paytm'));
 app.use('/api/get_orders', require('./routes/orders'));
 
-app.use(express.static(path.join(__dirname, '/build/')));
+// app.use(express.static(path.join(__dirname, '/build/')));
 
 app.use('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
