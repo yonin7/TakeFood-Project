@@ -189,11 +189,11 @@ const Verify = (props) => {
               </div>
             </div>
             <div className="verifyImage" style={{ marginTop: '1.5rem' }}>
-              <img
+              {/* <img
                 src="https://image.freepik.com/free-vector/people-eating-their-food-smile_23-2148473328.jpg"
                 alt="happy"
                 style={{ height: '25rem' }}
-              />
+              /> */}
             </div>
           </div>
         </>
