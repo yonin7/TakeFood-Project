@@ -18,8 +18,11 @@ const AuthState = (props) => {
   };
   const [state, dispatch] = useReducer(AuthReducer, initialState);
 
-  const userLoaded = async (user_id) => {
-    let path = user_id === null ? `/login` : `/login/id/${user_id}`;
+  const userLoaded = async (userId) => {
+    let path =
+      userId === null || userId === undefined
+        ? `/login`
+        : `/login/id/${userId}`;
     if (localStorage.token) {
       setAuthToken(localStorage.token);
     }
