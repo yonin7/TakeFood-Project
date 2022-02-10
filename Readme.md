@@ -1,12 +1,13 @@
 # Welcome to TakeBis! ✨
 
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://foodeazy.herokuapp.com/)&nbsp;[![Build passing](https://img.shields.io/badge/Build-Passing-brightgreen.svg?style=flat-square)](https://foodeazy.herokuapp.com/)&nbsp;[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://foodeazy.herokuapp.com/)&nbsp;[![License](https://img.shields.io/badge/license-MIT-brightgreen)](https://foodeazy.herokuapp.com/)&nbsp;![Made with Love in India](https://madewithlove.org.in/badge.svg)
+<!-- [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://foodeazy.herokuapp.com/)&nbsp;[![Build passing](https://img.shields.io/badge/Build-Passing-brightgreen.svg?style=flat-square)](https://foodeazy.herokuapp.com/)&nbsp;[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://foodeazy.herokuapp.com/)&nbsp;[![License](https://img.shields.io/badge/license-MIT-brightgreen)](https://foodeazy.herokuapp.com/)&nbsp;![Made with Love in India](https://madewithlove.org.in/badge.svg) -->
 
-TakeBis, is an online platform to order food and avoiding the hassle of going out or paying in cash. The users can opt for home delivery or take away as per thier choice and can pay thorugh cash or online methods (PayTM). In the times of COVID-19 where social distancing is such an important measure we think our website can help restaurants and customers.
+TakeBis, is an online platform to order food and avoiding the hassle of going out or paying in cash. The users can opt for home delivery or take away as per thier choice and can pay thorugh cash or online methods.
 
-**Project Link** - ***https://foodeazy-web.herokuapp.com/***
+<!-- In the times of COVID-19 where social distancing is such an important measure we think our website can help restaurants and customers. -->
+
+**Project Link** - ***https://takefood.herokuapp.com/***
 <br />
-**Demo Video** - ***https://www.youtube.com/watch?v=NvLRpNzKYss***
 
 ## Features and Functionalities 😃
 
@@ -20,7 +21,7 @@ TakeBis, is an online platform to order food and avoiding the hassle of going ou
 - Save Cart
 - Delete Cart
 - Order Type - Take Away or Delivery
-- Payment Methods - Cash or Online (using PayTM wallet, Debit/Credit card, Net Banking)
+<!-- - Payment Methods - Cash or Online (using PayTM wallet, Debit/Credit card, Net Banking) -->
 - View your current and previous orders
 
 **Admin features**
@@ -32,35 +33,36 @@ TakeBis, is an online platform to order food and avoiding the hassle of going ou
 
 ### Login Page
 
-![enter image description here](https://raw.githubusercontent.com/mihir0699/FoodEazy/master/readme_images/login.png?token=ALT5AMEK4CX7HVYASAKMCP3BL22BY)
+<!-- ![enter image description here](https://raw.githubusercontent.com/mihir0699/FoodEazy/master/readme_images/login.png?token=ALT5AMEK4CX7HVYASAKMCP3BL22BY) -->
 
 ### Email Verify Page
 
-![enter image description here](https://raw.githubusercontent.com/mihir0699/FoodEazy/master/readme_images/verify.png?token=ALT5AMFPEOQAAI7VQVV56XTBL22EA)
+<!-- ![enter image description here](https://raw.githubusercontent.com/mihir0699/FoodEazy/master/readme_images/verify.png?token=ALT5AMFPEOQAAI7VQVV56XTBL22EA) -->
 
 ### Home Page
 
-![enter image description here](https://raw.githubusercontent.com/mihir0699/FoodEazy/master/readme_images/menu.png?token=ALT5AMA2CGEZZGVVZ2DJPE3BL22FW)
+<!-- ![enter image description here](https://raw.githubusercontent.com/mihir0699/FoodEazy/master/readme_images/menu.png?token=ALT5AMA2CGEZZGVVZ2DJPE3BL22FW) -->
 
 ### Cart
 
-![enter image description here](https://raw.githubusercontent.com/mihir0699/FoodEazy/master/readme_images/cart.png?token=ALT5AMHY64MUDVC5BWYDE6LBL22HC)
+<!-- ![enter image description here](https://raw.githubusercontent.com/mihir0699/FoodEazy/master/readme_images/cart.png?token=ALT5AMHY64MUDVC5BWYDE6LBL22HC) -->
 
 ### Checkout
 
-![enter image description here](https://raw.githubusercontent.com/mihir0699/FoodEazy/master/readme_images/checkout.png?token=ALT5AMF45WBP3N4WOPY3G4LBL22IU)
+<!--
+![enter image description here](https://raw.githubusercontent.com/mihir0699/FoodEazy/master/readme_images/checkout.png?token=ALT5AMF45WBP3N4WOPY3G4LBL22IU) -->
 
 ### Contact Us
 
-![enter image description here](https://raw.githubusercontent.com/Devforlife07/FoodEazy/master/readme_images/contact_us.png)
+<!-- ![enter image description here](https://raw.githubusercontent.com/Devforlife07/FoodEazy/master/readme_images/contact_us.png) -->
 
 ### Add Dish (Admin)
 
-![enter image description here](https://raw.githubusercontent.com/mihir0699/FoodEazy/master/readme_images/add_dish.png?token=ALT5AMHASSDL3WCV2BVKP4DBL22JW)
+<!-- ![enter image description here](https://raw.githubusercontent.com/mihir0699/FoodEazy/master/readme_images/add_dish.png?token=ALT5AMHASSDL3WCV2BVKP4DBL22JW) -->
 
 ### Delete Dish (Admin)
 
-![enter image description here](https://raw.githubusercontent.com/mihir0699/FoodEazy/master/readme_images/delete_items.png?token=ALT5AMFDKCVU3E44IGHROLDBL22LA)
+<!-- ![enter image description here](https://raw.githubusercontent.com/mihir0699/FoodEazy/master/readme_images/delete_items.png?token=ALT5AMFDKCVU3E44IGHROLDBL22LA) -->
 
 ## Tech Stack 💻
 
@@ -73,16 +75,17 @@ TakeBis, is an online platform to order food and avoiding the hassle of going ou
 
 ## API :man_technologist:
 
-- [PayTM API](https://developer.paytm.com/docs/)
+<!-- - [PayTM API](https://developer.paytm.com/docs/) -->
+
 - [Send Grid API](https://sendgrid.com/)
-- [Cloudinary API](https://cloudinary.com/)
+<!-- - [Cloudinary API](https://cloudinary.com/) -->
 
 ## Installation :zap:
 
 **1. Clone this repo by running the following command :-**
 
 ```bash
- git clone https://github.com/Devforlife07/FoodEazy
+ git clone https://github.com/yonin7/TakeFood-Project
  cd foodeazy
 ```
 
@@ -99,18 +102,18 @@ TakeBis, is an online platform to order food and avoiding the hassle of going ou
  npm run dev
 ```
 
-**3. Create a `.env` file in the project root folder and copy the format of `.env.sample` file.**
+**3. Create a `.env` file in the project root folder.**
 
 - `.env.sample` file contains all the environment variables required for running the project.
 
-**4.** **🎉 Open your browser and go to `https://localhost:3000`**
+**4.** **🎉 Open your browser and go to `https://localhost:5000`**
 
 ## Contributors 🤝
 
-- [**Mihir Gupta**](https://github.com/mihir0699)
-- [**Devansh Gera**](https://github.com/Devforlife07)
+- [**Yehonatan Nisan**](https://www.linkedin.com/in/yehonatan-nissan/)
 
 ## 🤩 Don't forget to give this repo a ⭐ if you like this repo and want to appreciate our efforts
 
+<!--
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
-[![forthebadge](https://forthebadge.com/images/badges/built-by-developers.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/built-by-developers.svg)](https://forthebadge.com) -->

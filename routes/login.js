@@ -12,6 +12,7 @@ const jwtSecret = process.env.JWT_SECRET;
 const auth = require('../middleware/auth');
 
 router.get('/', auth, cors(), async (req, res) => {
+  console.log('12');
   try {
     const user = await Register.findById(req.user.id).select('-password');
     res.json(user);
