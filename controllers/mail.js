@@ -20,7 +20,7 @@ const sendWelcomeEmail = (email, name, emailToken) => {
       name +
       '<br>Welcome to TakeFood</h1><h1>Thanks for Signing up on our app</h1><h3>Your Code for verification is : ' +
       emailToken +
-      ' </h3></div><p>If this request is not made by you kindly ignore this mail.</p><p>Regards, <strong>Food Eazy</strong></p>',
+      ' </h3></div><p>If this request is not made by you kindly ignore this mail.</p><p>Regards, <strong>TakeFood</strong></p>',
   });
 };
 
