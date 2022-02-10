@@ -104,7 +104,7 @@ TakeBis, is an online platform to order food and avoiding the hassle of going ou
 
 **3. Create a `.env` file in the project root folder.**
 
-- `.env.sample` file contains all the environment variables required for running the project.
+<!-- - `.env.sample` file contains all the environment variables required for running the project. -->
 
 **4.** **🎉 Open your browser and go to `https://localhost:5000`**
 
