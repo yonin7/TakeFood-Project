@@ -26,7 +26,6 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use(morgan(' :method :url :req[header] - :res[header]'));
 app.use('/api/register', require('./routes/register'));
 app.use('/api/login', require('./routes/login'));
-app.use('/api/auth', require('./routes/login'));
 app.use('/api/cart', cors(), require('./routes/cart'));
 app.use('/api/orders', cors(), require('./routes/order'));
 app.use('/api/verify', require('./routes/verify'));
