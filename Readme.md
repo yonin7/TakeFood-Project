@@ -33,28 +33,31 @@ TakeBis, is an online platform to order food and avoiding the hassle of going ou
 
 ### Login Page
 
-<!-- ![enter image description here](https://raw.githubusercontent.com/mihir0699/FoodEazy/master/readme_images/login.png?token=ALT5AMEK4CX7HVYASAKMCP3BL22BY) -->
+![enter image description here](https://raw.githubusercontent.com/yonin7/TakeFood-Project/master/readme_images/login.png)
 
 ### Email Verify Page
 
-<!-- ![enter image description here](https://raw.githubusercontent.com/mihir0699/FoodEazy/master/readme_images/verify.png?token=ALT5AMFPEOQAAI7VQVV56XTBL22EA) -->
+![enter image description here](https://raw.githubusercontent.com/yonin7/TakeFood-Project/master/readme_images/verify.png)
 
 ### Home Page
 
-<!-- ![enter image description here](https://raw.githubusercontent.com/mihir0699/FoodEazy/master/readme_images/menu.png?token=ALT5AMA2CGEZZGVVZ2DJPE3BL22FW) -->
+![enter image description here](https://raw.githubusercontent.com/yonin7/TakeFood-Project/master/readme_images/menu.png)
 
 ### Cart
 
-<!-- ![enter image description here](https://raw.githubusercontent.com/mihir0699/FoodEazy/master/readme_images/cart.png?token=ALT5AMHY64MUDVC5BWYDE6LBL22HC) -->
+![enter image description here](https://raw.githubusercontent.com/yonin7/TakeFood-Project/master/readme_images/cart.png)
 
 ### Checkout
 
-<!--
-![enter image description here](https://raw.githubusercontent.com/mihir0699/FoodEazy/master/readme_images/checkout.png?token=ALT5AMF45WBP3N4WOPY3G4LBL22IU) -->
+![enter image description here](https://raw.githubusercontent.com/yonin7/TakeFood-Project/master/readme_images/checkout.png)
+
+### Orders
+
+![enter image description here](https://raw.githubusercontent.com/yonin7/TakeFood-Project/master/readme_images/order.png)
 
 ### Contact Us
 
-<!-- ![enter image description here](https://raw.githubusercontent.com/Devforlife07/FoodEazy/master/readme_images/contact_us.png) -->
+![enter image description here](https://raw.githubusercontent.com/yonin7/TakeFood-Project/master/readme_images/contact_us.png)
 
 ### Add Dish (Admin)
 
@@ -62,7 +65,11 @@ TakeBis, is an online platform to order food and avoiding the hassle of going ou
 
 ### Delete Dish (Admin)
 
-<!-- ![enter image description here](https://raw.githubusercontent.com/mihir0699/FoodEazy/master/readme_images/delete_items.png?token=ALT5AMFDKCVU3E44IGHROLDBL22LA) -->
+![enter image description here](https://raw.githubusercontent.com/yonin7/TakeFood-Project/master/readme_images/delete_items.png)
+
+### Orders (Admin)
+
+![enter image description here](https://raw.githubusercontent.com/yonin7/TakeFood-Project/master/readme_images/orderAdmin.png)
 
 ## Tech Stack 💻
 
