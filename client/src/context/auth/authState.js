@@ -1,4 +1,6 @@
 import React, { useContext, useReducer } from 'react';
+import { useHistory } from 'react-router-dom';
+
 import AuthContext from './authContext';
 import AuthReducer from './authReducer';
 // import axios from 'axios';
@@ -17,6 +19,7 @@ const AuthState = (props) => {
     displayVerified: false,
   };
   const [state, dispatch] = useReducer(AuthReducer, initialState);
+  const history = useHistory();
 
   const userLoaded = async (userId) => {
     let path =
@@ -150,6 +153,7 @@ const AuthState = (props) => {
       type: 'LOGOUT',
     });
     removeAuthToken();
+    // history.push('/');
   };
 
   return (
