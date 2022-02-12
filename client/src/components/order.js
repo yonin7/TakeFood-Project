@@ -67,7 +67,7 @@ const Order = () => {
     return (
       <div className="mainComponent" style={{ overflow: 'visible' }}>
         <div>
-          <div className=" other animate__animated animate__lightSpeedInLeft">
+          <div className="other animate__animated animate__lightSpeedInLeft ">
             <span
               style={{
                 display: 'flex',

@@ -11,13 +11,13 @@ const sendgridTransport = require('nodemailer-sendgrid-transport');
 var CronJob = require('cron').CronJob;
 const shortid = require('shortid');
 
-const transporter = nodemailer.createTransport(
-  sendgridTransport({
-    auth: {
-      api_key: process.env.SEND_GRID_KEY,
-    },
-  })
-);
+// const transporter = nodemailer.createTransport(
+//   sendgridTransport({
+//     auth: {
+//       api_key: process.env.SEND_GRID_KEY,
+//     },
+//   })
+// );
 
 Router.post('/', auth, async (req, res) => {
   let params = {};
@@ -45,10 +45,11 @@ Router.post('/', auth, async (req, res) => {
   });
   try {
     await order.save();
+    sendOrderEmail;
     return res.status(200);
   } catch (e) {
-    return res.sendStatus(500);
     console.log(e);
+    return res.sendStatus(500);
   }
   checksum_lib.genchecksum(
     params,

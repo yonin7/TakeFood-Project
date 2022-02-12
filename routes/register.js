@@ -75,7 +75,7 @@ router.post(
       await user.save();
       console.log(user);
       try {
-        let sendMail = mail.sendWelcomeEmail(email, name, uid);
+        let sendMail = mail.sendWelcomeEmail(email, name, link);
         res.status(200).json({ user_id: user._id, name: name });
       } catch (err) {
         console.log(err);

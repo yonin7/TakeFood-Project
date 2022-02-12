@@ -158,9 +158,9 @@ const Auth = (props) => {
                   {/* </div> */}
                 </div>
                 <input type="submit" value="Login" className="btn solid" />
-                <Link to="/forget" style={{ fontFamily: 'Poppins' }}>
+                {/* <Link to="/forget" style={{ fontFamily: 'Poppins' }}>
                   Forgot Password?
-                </Link>
+                </Link> */}
               </form>
               <form onSubmit={handleSignUpSubmit} className="sign-up-form">
                 <h2 className="title" style={{ fontFamily: 'poppins' }}>

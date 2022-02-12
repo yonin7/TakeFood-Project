@@ -51,7 +51,7 @@ const Forget = (props) => {
         clearTimeout(id);
       }, 3000);
     } catch (e) {
-      setStatus({ val: 1, msg: e.response.data, type: 'red' });
+      setStatus({ val: 1, msg: e, type: 'red' });
       let id = setTimeout(() => {
         setStatus({ val: 0, msg: '', type: '' });
         clearTimeout(id);

@@ -5,14 +5,7 @@ const User = require('../models/register');
 const nodemailer = require('nodemailer');
 const sendgridTransport = require('nodemailer-sendgrid-transport');
 const shortid = require('shortid');
-
-const transporter = nodemailer.createTransport(
-  sendgridTransport({
-    auth: {
-      api_key: process.env.SEND_GRID_KEY,
-    },
-  })
-);
+const mail = require('../controllers/mail');
 
 router.post('/', async (req, res) => {
   let { email } = req.body;
@@ -25,7 +18,7 @@ router.post('/', async (req, res) => {
       res.status(400).json('User not registered!');
     } else {
       let code = shortid.generate();
-      let link = `https://foodeazy-web.herokuapp.com/forget/${code}`;
+      let link = `https://takebis.herokuapp.com/forget/${code}`;
       Forget.findOneAndDelete({ email }, (err) => {
         if (err) console.log(err);
       });
@@ -36,25 +29,13 @@ router.post('/', async (req, res) => {
       await forget.save();
       let name = user.name;
 
-      var mailOptions = {
-        from: 'mailfoodeazy@gmail.com',
-        to: `${email}`,
-        subject: 'Reset your password for TakeBis',
-        text: 'That was easy!',
-        html:
-          'Hi, <strong>' +
-          name +
-          '</strong><p>Follow this <a href=' +
-          link +
-          ' >Link</a> to reset your passowrd.</p><p>If this request is not made by you kindly ignore this mail.</p><p>Regards, <strong>TakeBis</strong></p>',
-      };
-      transporter.sendMail(mailOptions, function (error, info) {
-        if (error) {
-          console.log(error);
-        } else {
-          res.status(200).json('Reset Email Sent to your mail id');
-        }
-      });
+      try {
+        let sendMail = mail.resetPassword(email, name, link);
+        res.status(200).json('Reset Email Sent to your mail id');
+      } catch (err) {
+        console.log(err);
+        res.status(400).json(err);
+      }
     }
   });
 });
