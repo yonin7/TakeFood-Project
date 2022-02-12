@@ -121,7 +121,10 @@ const Auth = (props) => {
             zIndex: '23444898429',
           }}
         >
-          <img src={require('../images/Spinner.gif')} alt="loader" />
+          <img
+            src={require('https://takebis.herokuapp.com/images/Spinner.gif')}
+            alt="loader"
+          />
         </div>
       ) : (
         <div className={flag === 0 ? 'container1' : 'container1 sign-up-mode'}>
@@ -238,7 +241,7 @@ const Auth = (props) => {
                 </button>
               </div>
               <img
-                src={require('../images/register.svg')}
+                src={require('https://takebis.herokuapp.com/images/register.svg')}
                 className="image"
                 alt=""
               />
@@ -259,7 +262,7 @@ const Auth = (props) => {
                 </button>
               </div>
               <img
-                src={require('../images/logo.svg')}
+                src={require('https://takebis.herokuapp.com/images/logo.svg')}
                 className="image"
                 alt=""
               />
