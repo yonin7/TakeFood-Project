@@ -40,6 +40,7 @@ export default (state, action) => {
         isAuthenticated: true,
         current: 1,
         loading: true,
+        verified: action.payload.verify,
       };
     case 'LOGIN_FAIL':
       let y = [];

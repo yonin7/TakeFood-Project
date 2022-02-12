@@ -27,10 +27,10 @@ const Contact = () => {
             <CardActionArea>
               <CardMedia
                 component="img"
-                alt=" Mihir Gupta"
+                alt=" Yehonatan Nisan"
                 height="300"
                 image={require('../images/me.png')}
-                title=" Mihir Gupta"
+                title=" Yehonatan Nisan"
               />
               <CardContent className="contact_card">
                 <Typography

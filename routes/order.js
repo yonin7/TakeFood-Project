@@ -5,15 +5,8 @@ const User = require('../models/register');
 const auth = require('../middleware/auth');
 const nodemailer = require('nodemailer');
 const crypto = require('crypto');
-const sendgridTransport = require('nodemailer-sendgrid-transport');
 const Order = require('../models/orders');
-const transporter = nodemailer.createTransport(
-  sendgridTransport({
-    auth: {
-      api_key: process.env.SEND_GRID_KEY,
-    },
-  })
-);
+const mail = require('../controllers/mail');
 
 // router.post('/', async (req, res) => {
 // 	const {
@@ -42,36 +35,31 @@ const transporter = nodemailer.createTransport(
 
 // })
 router.post('/', cors(), auth, async (req, res) => {
-  let method = req.body.value;
-  let order_id = crypto.randomBytes(16).toString('hex');
+  let user = await User.findById(req.user.id);
+  let email = user.email;
+  let name = user.name;
+  let method = req.body.mode;
+  let orderId = crypto.randomBytes(16).toString('hex');
   if (method === 'Takeaway') {
     let order = new Order({
       user: req.user.id,
-      order_id: order_id,
-      mode: req.body.value,
-      order: req.body.cart,
+      order_id: orderId,
+      mode: req.body.mode,
+      order: req.body.order,
       deliveryCharges: req.body.deliveryCharges,
       payment: req.body.payment,
     });
+    console.log(order);
     try {
       await order.save();
-      let email = req.body.user.email;
 
-      let name = req.body.user.name;
-      var mailOptions = {
-        from: 'mailfoodeazy@gmail.com',
-        to: `${email}`,
-        subject: 'Order Confirmation',
-        text: 'That was easy!',
-        html:
-          'Hi, <strong>' +
-          name +
-          '</strong><h2>Order Successfully Placed!</h2><h3><p>Thank you for ordering from TakeBis</h3> Your order id: ' +
-          order_id +
-          "</p><p style='text-align: left;'>Regards, <h1>TakeBis</h1></>",
-      };
-      let msg = await transporter.sendMail(mailOptions);
-      console.log(msg);
+      try {
+        let sendMail = mail.sendOrderEmail(email, name, order);
+      } catch (err) {
+        console.log(err);
+        res.status(400).json(err);
+      }
+
       let update = {
         cart: {},
       };
@@ -82,7 +70,7 @@ router.post('/', cors(), auth, async (req, res) => {
         update
       );
       res.status(200).send({
-        orderid: order_id,
+        orderid: orderId,
       });
       // res.redirect("/success?orderid=" + order_id)
     } catch (e) {
@@ -90,36 +78,26 @@ router.post('/', cors(), auth, async (req, res) => {
       res.sendStatus(500);
     }
   } else {
-    let order_id = crypto.randomBytes(16).toString('hex');
     let order = new Order({
       user: req.user.id,
-      address: req.body.address,
-      order_id: order_id,
-      mode: req.body.value,
-      order: req.body.cart,
+      email: email,
+      order_id: orderId,
+      mode: req.body.mode,
+      order: req.body.order,
       deliveryCharges: req.body.deliveryCharges,
       payment: req.body.payment,
       address: req.body.address,
     });
+    console.log(order);
     try {
       await order.save();
-      let email = req.body.user.email;
+      try {
+        let sendMail = mail.sendOrderEmail(email, name, order);
+      } catch (err) {
+        console.log(err);
+        res.status(400).json(err);
+      }
 
-      let name = req.body.user.name;
-      var mailOptions = {
-        from: 'mailfoodeazy@gmail.com',
-        to: `${email}`,
-        subject: 'Order Confirmation',
-        text: 'That was easy!',
-        html:
-          'Hi, <strong>' +
-          name +
-          '</strong><h2>Order Successfully Placed!</h2><h3><p>Thank you for ordering from TakeBis</h3> Your order id: ' +
-          order_id +
-          "</p><p style='text-align: left;'>Regards, <h1>TakeBis</h1></>",
-      };
-      let msg = await transporter.sendMail(mailOptions);
-      console.log(msg);
       let update = {
         cart: {},
       };
@@ -130,7 +108,7 @@ router.post('/', cors(), auth, async (req, res) => {
         update
       );
       res.status(200).send({
-        orderid: order_id,
+        orderid: orderId,
       });
       // res.redirect("/success?orderid=" + order_id)
     } catch (e) {
@@ -149,10 +127,10 @@ router.post('/', cors(), auth, async (req, res) => {
   // res.sendStatus(200)
 });
 router.get('/', async (req, res) => {
-  let order_id = req.query.orderid;
+  let orderId = req.query.orderid;
   try {
     let current = await Order.findOne({
-      order_id: order_id,
+      order_id: orderId,
     }).populate('user');
     // console.log(current)
     res.send(current);

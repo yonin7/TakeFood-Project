@@ -1,11 +1,17 @@
 import React, { useState, useEffect, useContext } from 'react';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 import './mobile.css';
 import Navbar from './components/Navbar';
 import Menu from './components/Menu';
 import CartState from './context/cart/cartState';
 import Alert from './components/Alert';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom';
 import Cart from './components/Cart';
 import { Toast } from 'react-bootstrap';
 import Auth from './components/auth';
@@ -82,6 +88,7 @@ export default function App() {
                     <Route exact path="/verify" component={Verify} />
                     <PrivateRoutes exact path="/order" component={Order} />
                     <Route path="/" component={NotFound} />
+                    <Redirect to="/" />
                   </Switch>
                 </>
               )}

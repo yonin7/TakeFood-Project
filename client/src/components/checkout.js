@@ -1,14 +1,14 @@
 import React, { useState, useContext, useEffect } from 'react';
 import CartContext from '../context/cart/cartContext';
-import { Toast } from 'react-bootstrap';
-import { Link, useRouteMatch, Redirect } from 'react-router-dom';
+import { Toast, Form, Button } from 'react-bootstrap';
+import { Link, useRouteMatch, useHistory } from 'react-router-dom';
 import { RadioGroup } from '@material-ui/core';
 import { Radio } from '@material-ui/core';
 import { Container } from '@material-ui/core/';
 import { FormControlLabel } from '@material-ui/core/';
 import { FormControl } from '@material-ui/core/';
 import { TextField } from '@material-ui/core/';
-import { Button } from '@material-ui/core';
+// import { Button } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import AuthContext from '../context/auth/authContext';
 import { makeStyles } from '@material-ui/core/styles';
@@ -16,37 +16,41 @@ import { makeStyles } from '@material-ui/core/styles';
 import 'animate.css';
 import baseURL from '../api/Api';
 
-const useStyles = makeStyles({
-  root: {
-    background: (props) =>
-      props.color === 'red'
-        ? 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)'
-        : 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
-    border: 0,
-    borderRadius: 3,
-    boxShadow: (props) =>
-      props.color === 'red'
-        ? '0 3px 5px 2px rgba(255, 105, 135, .3)'
-        : '0 3px 5px 2px rgba(33, 203, 243, .3)',
-    color: 'white',
-    height: 48,
-    padding: '0 30px',
-    margin: 8,
-  },
-});
+// const useStyles = makeStyles({
+//   root: {
+//     background: (props) =>
+//       props.color === 'red'
+//         ? 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)'
+//         : 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
+//     border: 0,
+//     borderRadius: 3,
+//     boxShadow: (props) =>
+//       props.color === 'red'
+//         ? '0 3px 5px 2px rgba(255, 105, 135, .3)'
+//         : '0 3px 5px 2px rgba(33, 203, 243, .3)',
+//     color: 'white',
+//     height: 48,
+//     padding: '0 30px',
+//     margin: 8,
+//   },
+// });
 
-function MyButton(props) {
-  const { color, ...other } = props;
-  const classes = useStyles(props);
-  return <Button className={classes.root} {...other} />;
-}
+// function MyButton(props) {
+//   const { color, ...other } = props;
+//   // const classes = useStyles(props);
+//   return <Button className={classes.root} {...other} />;
+// }
 
-MyButton.propTypes = {
-  color: PropTypes.oneOf(['blue', 'red']).isRequired,
-};
+// MyButton.propTypes = {
+//   color: PropTypes.oneOf(['blue', 'red']).isRequired,
+// };
 
 const Checkout = (props) => {
+  const history = useHistory();
+  console.log(props);
+
   const { state } = useContext(CartContext);
+  console.log(state);
   const [alert, setAlert] = useState({
     val: 0,
     type: '',
@@ -57,11 +61,25 @@ const Checkout = (props) => {
   const [deliveryCharges, setCharges] = React.useState(15);
   const [address, setAddress] = React.useState({
     Address: '',
-    Landmark: '',
     City: '',
     Phone: '',
     Zip: '',
   });
+  const handleOrder = async (e) => {
+    let order = {
+      mode: value,
+      order: {
+        items: state.items,
+        total_quantity: state.total_quantity,
+        total_price: state.total_price,
+      },
+      deliveryCharges: deliveryCharges,
+      payment: payment,
+      address: address,
+    };
+    const res = await baseURL.post('/orders', order);
+    history.push('/order');
+  };
   const Alerts = () => {
     return (
       <Toast
@@ -90,8 +108,13 @@ const Checkout = (props) => {
   };
   const handleChange = (event) => {
     setValue(event.target.value);
+    console.log(event.target.value);
     if (value !== 'Delivery') setCharges(1);
     else setCharges(0);
+  };
+  const handlePayment = (event) => {
+    setPayment(event.target.value);
+    console.log(event.target.value);
   };
 
   useEffect(() => {
@@ -175,7 +198,7 @@ const Checkout = (props) => {
         />
       </Link>
       {alert.val === 1 ? <Alerts /> : ''}
-      <form
+      <div
         className="paymentForm"
         style={{ width: '100%' }}
         onSubmit={handleSubmit}
@@ -187,77 +210,51 @@ const Checkout = (props) => {
                 {' '}
                 Mode of Order
               </h3>
-              <FormControl component="fieldset">
-                <RadioGroup
-                  aria-label="gender"
-                  name="delivery"
-                  value={value}
-                  onChange={handleChange}
-                >
-                  <div>
-                    <span className="mode">
-                      <FormControlLabel
-                        value="Delivery"
-                        defaultChecked
-                        control={<Radio />}
-                        label={
-                          <span style={{ fontFamily: 'Alata' }}>Delivery</span>
-                        }
-                      />
-                    </span>
-                  </div>
-                  <div>
-                    <FormControlLabel
-                      value="Takeaway"
-                      control={<Radio />}
-                      label={
-                        <span style={{ fontFamily: 'Alata' }}>Take Away</span>
-                      }
-                    />
-                  </div>
-                </RadioGroup>
-              </FormControl>
+              <Form
+                onChange={handleChange}
+                name="delivery"
+                value={value}
+                className="mb-3"
+              >
+                <Form.Check
+                  defaultChecked
+                  name="mode"
+                  type="radio"
+                  value="Delivery"
+                  label={<span style={{ fontFamily: 'Alata' }}>Delivery</span>}
+                />
+                <Form.Check
+                  inline
+                  name="mode"
+                  type="radio"
+                  value="Takeaway"
+                  label={<span style={{ fontFamily: 'Alata' }}>Take Away</span>}
+                />{' '}
+              </Form>
             </div>
             <div className="modeOfPayment animate__animated animate__bounceIn">
               <h3 style={{ fontWeight: 'bold', fontFamily: 'Kanit' }}>
                 Mode of Payment
               </h3>
-              <FormControl component="fieldset">
-                <RadioGroup
-                  aria-label="gender"
+              <Form name="payment" value={payment} onChange={handlePayment}>
+                <Form.Check
+                  type="radio"
+                  defaultChecked
+                  value="Cash on Delivery"
                   name="payment"
-                  value={payment}
-                  onChange={(e) => setPayment(e.target.value)}
-                >
-                  <div
-                    style={{
-                      fontFamily: 'Alata',
-                    }}
-                  >
-                    <FormControlLabel
-                      value="Cash on Delivery"
-                      control={<Radio />}
-                      label={
-                        <span style={{ fontFamily: 'Alata' }}>
-                          Cash on Delivery
-                        </span>
-                      }
-                      style={{
-                        fontFamily: 'Alata',
-                      }}
-                    />
-                  </div>
-                  <div>
-                    <FormControlLabel
-                      value="Online"
-                      control={<Radio />}
-                      label={
-                        <span style={{ fontFamily: 'Alata' }}>Online</span>
-                      }
-                    />
-                  </div>
-                </RadioGroup>
-              </FormControl>
+                  label={
+                    <span style={{ fontFamily: 'Alata' }}>
+                      Cash on Delivery
+                    </span>
+                  }
+                />{' '}
+                <Form.Check
+                  type="radio"
+                  value="Online"
+                  name="payment"
+                  label={<span style={{ fontFamily: 'Alata' }}>Online</span>}
+                />{' '}
+              </Form>
             </div>
             {value === 'Delivery' && (
               <>
@@ -268,36 +265,25 @@ const Checkout = (props) => {
                   <h3 style={{ fontWeight: 'bold', fontFamily: 'Kanit' }}>
                     Address Details
                   </h3>
-                  <TextField
+                  <Form.Label style={{ fontFamily: 'Poppins' }}>
+                    Address
+                  </Form.Label>
+                  <Form.Control
+                    placeholder="Address"
                     id="outlined-basic"
-                    label={
-                      <span style={{ fontFamily: 'Poppins' }}>Address</span>
-                    }
                     variant="outlined"
                     margin="normal"
                     name="Address"
                     onChange={handleChange1}
-                    fullWidth
-                    multiline
+                    // fullWidth
+                    // multiline
                   />
-                  <TextField
+                  <Form.Label style={{ fontFamily: 'Poppins' }}>
+                    City
+                  </Form.Label>
+                  <Form.Control
+                    placeholder="City"
                     id="outlined-basic"
-                    label={
-                      <span style={{ fontFamily: 'Poppins' }}>
-                        Landmark (Optional)
-                      </span>
-                    }
-                    variant="outlined"
-                    size="small"
-                    name="Landmark"
-                    margin="normal"
-                    onChange={handleChange1}
-                    fullWidth
-                  />
-
-                  <TextField
-                    id="outlined-basic"
-                    label={<span style={{ fontFamily: 'Poppins' }}>City</span>}
                     variant="outlined"
                     size="small"
                     name="City"
@@ -305,11 +291,11 @@ const Checkout = (props) => {
                     onChange={handleChange1}
                     // fullWidth
                   />
-                  <TextField
-                    id="outlined-basic"
-                    label={
-                      <span style={{ fontFamily: 'Poppins' }}>Zip Code</span>
-                    }
+                  <Form.Label style={{ fontFamily: 'Poppins' }}>
+                    Zip Code
+                  </Form.Label>
+                  <Form.Control
+                    placeholder="Zip Code"
                     variant="outlined"
                     name="Zip"
                     type="Number"
@@ -318,13 +304,12 @@ const Checkout = (props) => {
                     onChange={handleChange1}
                     // fullWidth
                   />
-                  <TextField
+                  <Form.Label style={{ fontFamily: 'Poppins' }}>
+                    Contact Number
+                  </Form.Label>
+                  <Form.Control
+                    placeholder="Contact Number"
                     id="outlined-basic"
-                    label={
-                      <span style={{ fontFamily: 'Poppins' }}>
-                        Contact Number
-                      </span>
-                    }
                     variant="outlined"
                     name="Phone"
                     size="small"
@@ -373,16 +358,16 @@ const Checkout = (props) => {
                 &#8362; {state.total_price + deliveryCharges}
               </h6>
             </div>
-            <MyButton type="submit" color="blue" style={{ width: '100%' }}>
+
+            <Button
+              onClick={handleOrder}
+              type="submit"
+              color="blue"
+              style={{ width: '100%' }}
+            >
+              {/* <Link to="/order">ORDER</Link> */}
               <span style={{ fontFamily: 'Mulish' }}>ORDER</span>
-            </MyButton>
-            <span>
-              Payments Secured by{'  '}
-              <img
-                src="https://img.icons8.com/color/48/000000/paytm.png"
-                alt="paytm"
-              />{' '}
-            </span>
+            </Button>
             <br />
             <img
               src="https://image.freepik.com/free-vector/friends-eating-snacks-friendly-people-group-have-dinner-desk-restaurant-cartoon-vector-characters-isolated_53562-7916.jpg"
@@ -391,7 +376,7 @@ const Checkout = (props) => {
             />
           </div>
         </div>
-      </form>
+      </div>
       {/* </Container> */}
     </>
   );

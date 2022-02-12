@@ -22,19 +22,19 @@ const transporter = nodemailer.createTransport(
 Router.post('/', auth, async (req, res) => {
   let params = {};
   let order_id = crypto.randomBytes(16).toString('hex');
-  (params['MID'] = process.env.MERCHANT_ID),
-    (params['WEBSITE'] = 'WEBSTAGING'),
-    (params['CHANNEL_ID'] = 'WEB'),
-    ((params['ORDER_ID'] = order_id.toString()),
-    (params['CUST_ID'] = req.user.id.toString()),
-    (params['INDUSTRY_TYPE_ID'] = 'Retail'),
-    (params['TXN_AMOUNT'] = req.body.txn_amount.toString()),
-    (params['CALLBACK_URL'] =
-      'https://foodeazy-web.herokuapp.com/api/paytm/success'),
-    (params['EMAIL'] = req.body.user.email.toString()),
-    (params['MOBILE_NO'] = req.body.user.number.toString()));
+  // (params['MID'] = process.env.MERCHANT_ID),
+  //   (params['WEBSITE'] = 'WEBSTAGING'),
+  //   (params['CHANNEL_ID'] = 'WEB'),
+  //   ((params['ORDER_ID'] = order_id.toString()),
+  //   (params['CUST_ID'] = req.user.id.toString()),
+  //   (params['INDUSTRY_TYPE_ID'] = 'Retail'),
+  //   (params['TXN_AMOUNT'] = req.body.txn_amount.toString()),
+  //   (params['CALLBACK_URL'] =
+  //     'https://foodeazy-web.herokuapp.com/api/paytm/success'),
+  //   (params['EMAIL'] = req.body.user.email.toString()),
+  //   (params['MOBILE_NO'] = req.body.user.number.toString()));
 
-  order = new Order({
+  const order = new Order({
     user: req.user.id,
     order_id: order_id,
     mode: req.body.value,
@@ -45,6 +45,7 @@ Router.post('/', auth, async (req, res) => {
   });
   try {
     await order.save();
+    return res.status(200);
   } catch (e) {
     return res.sendStatus(500);
     console.log(e);
