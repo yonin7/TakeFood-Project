@@ -256,10 +256,7 @@ const Menu = (props) => {
               style={{ marginRight: '0.5rem', marginBottom: '0.5rem' }}
             >
               <Link to="/cart" className="cart-icon">
-                <img
-                  src="https://image.flaticon.com/icons/svg/630/630746.svg"
-                  alt="cart"
-                />
+                <img src="https://i.ibb.co/hW5LFLf/pngegg-1.png" alt="Cart" />
               </Link>
             </span>
           </div>

@@ -28,6 +28,7 @@ TakeBis, is an online platform to order food and avoiding the hassle of going ou
 
 - Add new dishes
 - Delete dishes
+- Change Orders status
 
 ## Screenshots
 
