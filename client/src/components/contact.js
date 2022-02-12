@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import AuthContext from '../context/auth/authContext';
+import LoadingContext from '../context/loading/loadingContext';
+
 import { makeStyles } from '@material-ui/core/styles';
 import { Card } from '@material-ui/core';
 import { CardActionArea } from '@material-ui/core/';
@@ -18,6 +21,9 @@ const useStyles = makeStyles({
 });
 
 const Contact = () => {
+  const userInfo = useContext(AuthContext);
+  const { Loader } = useContext(LoadingContext);
+
   const classes = useStyles();
   return (
     <>

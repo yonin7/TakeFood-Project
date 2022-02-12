@@ -148,6 +148,7 @@ const AuthState = (props) => {
     });
   };
   const logout = () => {
+    console.log('1');
     localStorage.removeItem('token');
     dispatch({
       type: 'LOGOUT',

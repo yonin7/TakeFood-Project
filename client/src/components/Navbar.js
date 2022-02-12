@@ -20,6 +20,7 @@ export default function Navbar1(props) {
   // console.log(isAuthenticated);
 
   const handleLogout = (e) => {
+    console.log(12);
     logout();
   };
   return (
@@ -91,7 +92,7 @@ export default function Navbar1(props) {
             <span className="bg_grey">Contact Us</span>
           </Link>
         </div>
-        {isAuthenticated === true && (
+        {isAuthenticated && (
           <div className="navLogout">
             {' '}
             <button

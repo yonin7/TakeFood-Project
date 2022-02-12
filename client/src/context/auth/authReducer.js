@@ -1,4 +1,5 @@
 export default (state, action) => {
+  console.log(state);
   switch (action.type) {
     case 'REGISTER_SUCCESS':
       return {
@@ -62,6 +63,7 @@ export default (state, action) => {
     case 'AUTH_ERROR':
       return { ...state, isAuthenticated: false, user: null };
     case 'LOGOUT':
+      console.log(state);
       return {
         ...state,
         isAuthenticated: false,

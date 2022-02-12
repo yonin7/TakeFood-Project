@@ -84,11 +84,11 @@ export default function App() {
                       path="/forget/:code"
                       component={ResetPassword}
                     />
-                    <Route exact path="/contact" component={Contact} />
+                    <PrivateRoutes exact path="/contact" component={Contact} />
                     <Route exact path="/verify" component={Verify} />
                     <PrivateRoutes exact path="/order" component={Order} />
                     <Route path="/" component={NotFound} />
-                    <Redirect to="/" />
+                    <Redirect to="/" component={Menu} />
                   </Switch>
                 </>
               )}
