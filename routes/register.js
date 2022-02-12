@@ -23,8 +23,8 @@ router.post(
     check('number', 'Please include a valid phone number').isMobilePhone(),
     check(
       'password',
-      'Password should be combination of one uppercase , one lower case, one special char, one digit and min 8 , max 20 char long'
-    ).matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/, 'i'),
+      'Password should be combination of one uppercase , one lower case, one special char, one digit and min 4 , max 20 char long'
+    ).matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{4,}$/, 'i'),
     check('confirmPassword', 'Passwords do not match!').custom(
       (value, { req, loc, path }) => {
         if (value !== req.body.password) {
