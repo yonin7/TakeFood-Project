@@ -1,13 +1,13 @@
-import React, { useContext } from "react";
-import AuthContext from "../context/auth/authContext";
-import { Route, Redirect } from "react-router-dom";
+import React, { useContext } from 'react';
+import AuthContext from '../context/auth/authContext';
+import { Route, Redirect } from 'react-router-dom';
 
 const PrivateRoutes = ({ component: Component, ...rest }) => {
   const NotVerified = () => {
     return (
-      <div style={{ width: "100%", background: "red", color: "white" }}>
+      <div style={{ width: '100%', background: 'red', color: 'white' }}>
         <center>
-          {" "}
+          {' '}
           <h1>
             Your Email Id Isn't Verified.Verification Link Will Expire Within an
             hour
