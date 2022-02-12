@@ -215,7 +215,7 @@ const Order = () => {
               style={{ width: '10%', height: '10%' }}
             /> */}
           </h1>
-          {!active.length ? (
+          {!past.length ? (
             <No_order />
           ) : (
             past.map((item, idx) => (
