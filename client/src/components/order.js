@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import baseURL from '../api/Api';
 import AuthContext from '../context/auth/authContext';
 import LoadingContext from '../context/loading/loadingContext';
+import { Button } from 'react-bootstrap';
 
 const Order = () => {
   const userInfo = useContext(AuthContext);
@@ -37,7 +38,31 @@ const Order = () => {
   useEffect(() => {
     console.log(component);
     // console.log(name);
-  }, [component]);
+  }, [component, user, active, past]);
+
+  const changeOrderStatus = async (order_id, status, index) => {
+    const res = await baseURL.put(`/orders/${order_id}`, {
+      status: status,
+    });
+    let pastOrders = past;
+    let currentOrders = active;
+    let order = null;
+    if (status === 'true') {
+      order = currentOrders[index];
+      order['status'] = status;
+      pastOrders.push(order);
+      currentOrders.splice(index, 1);
+    } else {
+      order = pastOrders[index];
+      order['status'] = status;
+      currentOrders.push(order);
+      pastOrders.splice(index, 1);
+    }
+    setActive(currentOrders);
+    setPast(pastOrders);
+    console.log(active);
+    console.log(past);
+  };
   const Component = () => {
     return (
       <div className="mainComponent" style={{ overflow: 'visible' }}>
@@ -143,7 +168,24 @@ const Order = () => {
                 <div className="pastOrdersInfo">
                   Total Items: {item.order.total_quantity}
                 </div>
-                <h5>Delievered On {new Date(item.time).toDateString()}</h5>
+                <div>
+                  <h5>Delievered On {new Date(item.time).toDateString()}</h5>
+                  {user.role === 'admin' && (
+                    <Button
+                      onClick={() =>
+                        changeOrderStatus(item.order_id, 'true', idx)
+                      }
+                      type="submit"
+                      color="blue"
+                      style={{ width: '100%' }}
+                    >
+                      {/* <Link to="/order">ORDER</Link> */}
+                      <span style={{ fontFamily: 'Mulish' }}>
+                        Change Status
+                      </span>
+                    </Button>
+                  )}
+                </div>
               </div>
             ))
           )}
@@ -189,6 +231,19 @@ const Order = () => {
                   Total Items: {item.order.total_quantity}
                 </div>
                 <h5>Delievered On {new Date(item.time).toDateString()}</h5>
+                {user.role === 'admin' && (
+                  <Button
+                    onClick={() =>
+                      changeOrderStatus(item.order_id, 'false', idx)
+                    }
+                    type="submit"
+                    color="blue"
+                    style={{ width: '100%' }}
+                  >
+                    {/* <Link to="/order">ORDER</Link> */}
+                    <span style={{ fontFamily: 'Mulish' }}>Change Status</span>
+                  </Button>
+                )}
               </div>
             ))
           )}

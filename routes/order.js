@@ -138,5 +138,22 @@ router.get('/', async (req, res) => {
     res.sendStatus(404);
   }
 });
+router.put('/:order_id', async (req, res) => {
+  let orderId = req.params.order_id;
+  console.log(orderId);
+  try {
+    let current = await Order.findOneAndUpdate(
+      {
+        order_id: orderId,
+      },
+      { status: req.body.status }
+    );
+    console.log(current, req.body.status);
+    res.send(current);
+  } catch (e) {
+    console.log(e);
+    res.sendStatus(404);
+  }
+});
 
 module.exports = router;

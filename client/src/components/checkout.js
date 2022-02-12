@@ -49,7 +49,7 @@ const Checkout = (props) => {
   const history = useHistory();
   console.log(props);
 
-  const { state } = useContext(CartContext);
+  const { state, clearCart } = useContext(CartContext);
   console.log(state);
   const [alert, setAlert] = useState({
     val: 0,
@@ -78,6 +78,7 @@ const Checkout = (props) => {
       address: address,
     };
     const res = await baseURL.post('/orders', order);
+    clearCart();
     history.push('/order');
   };
   const Alerts = () => {

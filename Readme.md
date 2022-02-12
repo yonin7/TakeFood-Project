@@ -6,7 +6,7 @@ TakeBis, is an online platform to order food and avoiding the hassle of going ou
 
 <!-- In the times of COVID-19 where social distancing is such an important measure we think our website can help restaurants and customers. -->
 
-**Project Link** - ***https://takefood.herokuapp.com/***
+**Project Link** - ***https://takebis.herokuapp.com/***
 <br />
 
 ## Features and Functionalities 😃
@@ -58,7 +58,7 @@ TakeBis, is an online platform to order food and avoiding the hassle of going ou
 
 ### Add Dish (Admin)
 
-<!-- ![enter image description here](https://raw.githubusercontent.com/mihir0699/FoodEazy/master/readme_images/add_dish.png?token=ALT5AMHASSDL3WCV2BVKP4DBL22JW) -->
+![enter image description here](https://raw.githubusercontent.com/yonin7/TakeFood-Project/master/readme_images/add_dish.png)
 
 ### Delete Dish (Admin)
 

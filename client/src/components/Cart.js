@@ -49,6 +49,7 @@ const Cart = () => {
     state,
     clearCart,
   } = useContext(CartContext);
+
   // console.log(items);
   //  useEffect(() => {
   // loadCart();
